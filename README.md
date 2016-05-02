@@ -1,0 +1,1 @@
+Addon service for Kodi based on https://github.com/harddevelop/httpproxy

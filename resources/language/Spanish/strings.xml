@@ -1,0 +1,6 @@
+<strings>
+    <string id="10000">Servicio</string>
+    <string id="10001">Puerto del servidor</string>
+    <string id="10002">Redirigir el flujo a servidor local</string>
+    <string id="20001">httpproxy ha iniciado</string>
+</strings>

@@ -1,0 +1,6 @@
+<settings>
+	<category label="10000">
+		<setting id="port" type="text" label="10001" value="46720" default="46720" enable="true"/>
+		<setting id="local_redirect" type="text" label="10002" value="true" default="true" enable="true"/>
+	</category>
+</settings>

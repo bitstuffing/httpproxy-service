@@ -1,0 +1,7 @@
+<strings>
+    <string id="10000">Service</string>
+    <string id="10001">Server port</string>
+    <string id="10002">Redirect the broadcast to local server</string>
+
+    <string id="20001">httpproxy has started</string>
+</strings>
