@@ -400,7 +400,7 @@ def test(HandlerClass=ProxyRequestHandler, ServerClass=ThreadingHTTPServer, prot
         port = int(sys.argv[1])
     else:
         port = DEFAULT_PORT
-    server_address = ('', port)
+    server_address = (SERVER, port)
 
     HandlerClass.protocol_version = protocol
     httpd = ServerClass(server_address, HandlerClass)
@@ -409,8 +409,6 @@ def test(HandlerClass=ProxyRequestHandler, ServerClass=ThreadingHTTPServer, prot
     logger.debug(str("Serving HTTP Proxy on: "+ str(sa[0])+ ", port: "+ str(sa[1])))
     xbmcgui.Dialog().notification("Info",addon.getLocalizedString(20001))
     httpd.serve_forever()
-
-
 
 if __name__ == '__main__':
     try:
