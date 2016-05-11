@@ -411,5 +411,22 @@ def test(HandlerClass=ProxyRequestHandler, ServerClass=ThreadingHTTPServer, prot
     httpd.serve_forever()
 
 
+
 if __name__ == '__main__':
-    test()
+    try:
+        test()
+    except:
+        logger.error("Could no be open a local socket with httpd.socket.getsockname(), trying old veetle local proxy for Android")
+        '''
+        Android patch
+        provided from plugin.video.veetle
+        and using custom logic
+        '''
+        socket.setdefaulttimeout(10)
+        server_class = ThreadingHTTPServer
+        httpd = server_class((SERVER, DEFAULT_PORT), ProxyRequestHandler)
+        logger.debug("XBMCLocalProxy Starts - %s:%s" % (SERVER, DEFAULT_PORT))
+        while(True):
+            httpd.handle_request()
+        httpd.server_close()
+        logger.debug("XBMCLocalProxy Stops %s:%s" % (SERVER, DEFAULT_PORT))
