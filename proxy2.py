@@ -400,20 +400,16 @@ def test(HandlerClass=ProxyRequestHandler, ServerClass=ThreadingHTTPServer, prot
         port = int(sys.argv[1])
     else:
         port = DEFAULT_PORT
-    server_address = (SERVER, port)
+    server_address = ('', port)
 
     HandlerClass.protocol_version = protocol
     httpd = ServerClass(server_address, HandlerClass)
-    try:
-        sa = httpd.socket.getsockname()
-        logger.debug(str("Serving HTTP Proxy on: "+ str(sa[0])+ ", port: "+ str(sa[1])))
-    except:
-        logger.debug(str("Serving HTTP Proxy on: "+ str(SERVER)+ ", port: "+ str(port)))
+
+    sa = httpd.socket.getsockname()
+    logger.debug(str("Serving HTTP Proxy on: "+ str(sa[0])+ ", port: "+ str(sa[1])))
     xbmcgui.Dialog().notification("Info",addon.getLocalizedString(20001))
     httpd.serve_forever()
 
+
 if __name__ == '__main__':
-    try:
-        test()
-    except:
-        logger.error("Could no be opened a local socket with httpd.socket.getsockname()")
+    test()
