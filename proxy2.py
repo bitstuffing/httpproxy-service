@@ -404,9 +404,11 @@ def test(HandlerClass=ProxyRequestHandler, ServerClass=ThreadingHTTPServer, prot
 
     HandlerClass.protocol_version = protocol
     httpd = ServerClass(server_address, HandlerClass)
-
-    #sa = httpd.socket.getsockname()
-    logger.debug(str("Serving HTTP Proxy on: "+ str(SERVER)+ ", port: "+ str(port)))
+    try:
+        sa = httpd.socket.getsockname()
+        logger.debug(str("Serving HTTP Proxy on: "+ str(sa[0])+ ", port: "+ str(sa[1])))
+    except:
+        logger.debug(str("Serving HTTP Proxy on: "+ str(SERVER)+ ", port: "+ str(port)))
     xbmcgui.Dialog().notification("Info",addon.getLocalizedString(20001))
     httpd.serve_forever()
 
